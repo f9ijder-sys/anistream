@@ -1,0 +1,71 @@
+generator client {
+  provider   = "prisma-client"
+  output     = "./generated"
+  engineType = "client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DB_FILE_NAME")
+}
+
+model User {
+  // Adaptive AI platform columns (do not change)
+  id     String  @id
+  name   String?
+  image  String?
+  handle String?
+
+  // Relations
+  animeList    UserAnimeList[]
+  watchHistory WatchHistory[]
+  admin        Admin?
+  ban          UserBan?
+}
+
+model UserAnimeList {
+  id          Int      @id @default(autoincrement())
+  userId      String
+  animeId     Int
+  animeTitle  String
+  animePoster String?
+  status      String
+  addedAt     DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, animeId])
+}
+
+model WatchHistory {
+  id            Int      @id @default(autoincrement())
+  userId        String
+  animeId       Int
+  episodeNumber Int
+  watchedAt     DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Admin {
+  userId    String   @id
+  grantedAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Announcement {
+  id        Int      @id @default(autoincrement())
+  title     String
+  message   String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model UserBan {
+  userId   String   @id
+  bannedAt DateTime @default(now())
+  reason   String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
