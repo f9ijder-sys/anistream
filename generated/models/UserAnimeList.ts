@@ -210,7 +210,7 @@ export type UserAnimeListGroupByOutputType = {
   _max: UserAnimeListMaxAggregateOutputType | null
 }
 
-type GetUserAnimeListGroupByPayload<T extends UserAnimeListGroupByArgs> = Prisma.PrismaPromise<
+export type GetUserAnimeListGroupByPayload<T extends UserAnimeListGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<UserAnimeListGroupByOutputType, T['by']> &
       {
@@ -492,6 +492,7 @@ export type UserAnimeListCreateOrConnectWithoutUserInput = {
 
 export type UserAnimeListCreateManyUserInputEnvelope = {
   data: Prisma.UserAnimeListCreateManyUserInput | Prisma.UserAnimeListCreateManyUserInput[]
+  skipDuplicates?: boolean
 }
 
 export type UserAnimeListUpsertWithWhereUniqueWithoutUserInput = {
@@ -1254,6 +1255,11 @@ export type UserAnimeListFindManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * Skip the first `n` UserAnimeLists.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of UserAnimeLists.
+   */
   distinct?: Prisma.UserAnimeListScalarFieldEnum | Prisma.UserAnimeListScalarFieldEnum[]
 }
 
@@ -1287,6 +1293,7 @@ export type UserAnimeListCreateManyArgs<ExtArgs extends runtime.Types.Extensions
    * The data used to create many UserAnimeLists.
    */
   data: Prisma.UserAnimeListCreateManyInput | Prisma.UserAnimeListCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1305,6 +1312,7 @@ export type UserAnimeListCreateManyAndReturnArgs<ExtArgs extends runtime.Types.E
    * The data used to create many UserAnimeLists.
    */
   data: Prisma.UserAnimeListCreateManyInput | Prisma.UserAnimeListCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

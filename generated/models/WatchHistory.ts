@@ -200,7 +200,7 @@ export type WatchHistoryGroupByOutputType = {
   _max: WatchHistoryMaxAggregateOutputType | null
 }
 
-type GetWatchHistoryGroupByPayload<T extends WatchHistoryGroupByArgs> = Prisma.PrismaPromise<
+export type GetWatchHistoryGroupByPayload<T extends WatchHistoryGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<WatchHistoryGroupByOutputType, T['by']> &
       {
@@ -432,6 +432,7 @@ export type WatchHistoryCreateOrConnectWithoutUserInput = {
 
 export type WatchHistoryCreateManyUserInputEnvelope = {
   data: Prisma.WatchHistoryCreateManyUserInput | Prisma.WatchHistoryCreateManyUserInput[]
+  skipDuplicates?: boolean
 }
 
 export type WatchHistoryUpsertWithWhereUniqueWithoutUserInput = {
@@ -1172,6 +1173,11 @@ export type WatchHistoryFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` WatchHistories.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of WatchHistories.
+   */
   distinct?: Prisma.WatchHistoryScalarFieldEnum | Prisma.WatchHistoryScalarFieldEnum[]
 }
 
@@ -1205,6 +1211,7 @@ export type WatchHistoryCreateManyArgs<ExtArgs extends runtime.Types.Extensions.
    * The data used to create many WatchHistories.
    */
   data: Prisma.WatchHistoryCreateManyInput | Prisma.WatchHistoryCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1223,6 +1230,7 @@ export type WatchHistoryCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ex
    * The data used to create many WatchHistories.
    */
   data: Prisma.WatchHistoryCreateManyInput | Prisma.WatchHistoryCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

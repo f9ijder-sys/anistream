@@ -1,8 +1,10 @@
-import { PrismaBetterSQLite3 } from "@prisma/adapter-better-sqlite3";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@/../generated/client";
 import { env } from "@/lib/env";
+import { Pool } from "pg";
 
-const adapter = new PrismaBetterSQLite3({
-  url: env.DB_FILE_NAME,
-});
+const connectionString = env.DATABASE_URL;
+const pool = new Pool({ connectionString });
+const adapter = new PrismaPg(pool);
+
 export const db = new PrismaClient({ adapter });

@@ -192,7 +192,7 @@ export type AnnouncementGroupByOutputType = {
   _max: AnnouncementMaxAggregateOutputType | null
 }
 
-type GetAnnouncementGroupByPayload<T extends AnnouncementGroupByArgs> = Prisma.PrismaPromise<
+export type GetAnnouncementGroupByPayload<T extends AnnouncementGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<AnnouncementGroupByOutputType, T['by']> &
       {
@@ -999,6 +999,11 @@ export type AnnouncementFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` Announcements.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Announcements.
+   */
   distinct?: Prisma.AnnouncementScalarFieldEnum | Prisma.AnnouncementScalarFieldEnum[]
 }
 
@@ -1028,6 +1033,7 @@ export type AnnouncementCreateManyArgs<ExtArgs extends runtime.Types.Extensions.
    * The data used to create many Announcements.
    */
   data: Prisma.AnnouncementCreateManyInput | Prisma.AnnouncementCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1046,6 +1052,7 @@ export type AnnouncementCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ex
    * The data used to create many Announcements.
    */
   data: Prisma.AnnouncementCreateManyInput | Prisma.AnnouncementCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**

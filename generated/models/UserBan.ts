@@ -144,7 +144,7 @@ export type UserBanGroupByOutputType = {
   _max: UserBanMaxAggregateOutputType | null
 }
 
-type GetUserBanGroupByPayload<T extends UserBanGroupByArgs> = Prisma.PrismaPromise<
+export type GetUserBanGroupByPayload<T extends UserBanGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<UserBanGroupByOutputType, T['by']> &
       {
@@ -1008,6 +1008,11 @@ export type UserBanFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Skip the first `n` UserBans.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of UserBans.
+   */
   distinct?: Prisma.UserBanScalarFieldEnum | Prisma.UserBanScalarFieldEnum[]
 }
 
@@ -1041,6 +1046,7 @@ export type UserBanCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * The data used to create many UserBans.
    */
   data: Prisma.UserBanCreateManyInput | Prisma.UserBanCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1059,6 +1065,7 @@ export type UserBanCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * The data used to create many UserBans.
    */
   data: Prisma.UserBanCreateManyInput | Prisma.UserBanCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */
