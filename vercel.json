@@ -1,7 +1,7 @@
 {
   "functions": {
     "dist/api/server.js": {
-      "runtime": "nodejs"
+      "runtime": "nodejs@22"
     }
   },
   "rewrites": [
